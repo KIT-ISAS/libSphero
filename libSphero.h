@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <ostream>
 #include <string>
 #include <vector>
-#include <stddef.h>
+#include <inttypes.h>
 
 namespace LibSphero {
 
