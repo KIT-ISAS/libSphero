@@ -8,21 +8,25 @@ Nicklas Gavelin (nicklas.gavelin@gmail.com) at https://github.com/nicklasgav/Sph
 This code snippet connects to the robot and sets the LED color.
 
 	#include <libSphero.h>
+	#include <iostream>
 
 	using namespace LibSphero;
 
 	int main(int argc, char **argv) {
-		Robot robot;
+	    Robot robot;
 
-		robot.connect("00:06:66:XX:XX:XX");
+	    if (!robot.connect("00:06:66:44:29:56")) { // replace with your address!
+	        std::cout << "Failed to connect!" << std::endl;
+	        return 0;
+	    }	
 
-		while(true) {
-			robot.setLEDColor(255, 0, 0);
-			robot.delay(200);
-			robot.setLEDColor(0, 255, 0);
-			robot.delay(200);
-			robot.setLEDColor(0, 0, 255);
-			robot.delay(200);
-		}
+	    while(true) {
+	        robot.setLEDColor(255, 0, 0);
+	        robot.delay(200);
+	        robot.setLEDColor(0, 255, 0);
+	        robot.delay(200);
+	        robot.setLEDColor(0, 0, 255);
+	        robot.delay(200);
+	    }
 	}
 
