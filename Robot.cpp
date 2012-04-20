@@ -217,7 +217,7 @@ void Robot::setSpeed(uint8_t speed) {
 	roll(state.heading, speed);
 }
 
-void Robot::setColor(uint8_t red, uint8_t green, uint8_t blue) {
+void Robot::setLEDColor(uint8_t red, uint8_t green, uint8_t blue) {
 	send(Macro::RGBLED(red, green, blue));
 }
 

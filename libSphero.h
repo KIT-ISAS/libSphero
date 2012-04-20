@@ -423,7 +423,7 @@ public:
 	void calibrateHeading(int heading);
 
 	/** Sets the LED RGB color */
-	void setColor(uint8_t red, uint8_t green, uint8_t blue);
+	void setLEDColor(uint8_t red, uint8_t green, uint8_t blue);
 
 	/** Sets the brightness of the front LED (0-255) */
 	void setFrontLEDBrightness(uint8_t brightness);
