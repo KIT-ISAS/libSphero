@@ -85,8 +85,8 @@ Command::Message Macro::RGBLED(uint8_t red, uint8_t green,
 	};
 }
 
-Command::Message Macro::rawMotor(MotorMode leftMode, int leftSpeed,
-		MotorMode rightMode, int rightSpeed) {
+Command::Message Macro::rawMotor(MotorMode leftMode, uint8_t leftSpeed,
+		MotorMode rightMode, uint8_t rightSpeed) {
 	return {
 		Command::MessageType::RAW_MOTOR,
 		{
@@ -99,13 +99,12 @@ Command::Message Macro::rawMotor(MotorMode leftMode, int leftSpeed,
 }
 
 Command::Message Macro::roll(int heading, uint8_t velocity, bool stop) {
-	int corrHeading = ((unsigned int) heading) % 360;
 	return {
 		Command::MessageType::ROLL,
 		{
 			(uint8_t)velocity,
-			(uint8_t)(corrHeading >> 8),
-			(uint8_t)corrHeading,
+			(uint8_t)(heading >> 8),
+			(uint8_t)heading,
 			(uint8_t)(stop ? 0 : 1)
 		}
 	};
@@ -120,7 +119,7 @@ Command::Message Macro::rotationRate(uint8_t rate) {
 	};
 }
 
-Command::Message Macro::runMacro(int macroId) {
+Command::Message Macro::runMacro(uint8_t macroId) {
 	return {
 		Command::MessageType::RUN_MACRO,
 		{
@@ -129,8 +128,8 @@ Command::Message Macro::runMacro(int macroId) {
 	};
 }
 
-Command::Message Macro::setDataStreaming(int mDivisor, int mPacketFrames,
-		int mSensorMask, int mPacketCount) {
+Command::Message Macro::setDataStreaming(uint16_t mDivisor, uint16_t mPacketFrames,
+		int mSensorMask, uint8_t mPacketCount) {
 	return {
 		Command::MessageType::SET_DATA_STREAMING,
 		{

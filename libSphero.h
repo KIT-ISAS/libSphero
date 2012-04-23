@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <ostream>
 #include <string>
 #include <vector>
-#include <inttypes.h>
+#include <stddef.h>
 
 namespace LibSphero {
 
@@ -314,9 +314,9 @@ struct Macro {
 
 	/** Sets the direction and speed for each individual internal motor */
 	static Command::Message rawMotor(MotorMode leftMode,
-			int leftSpeed,
+			uint8_t leftSpeed,
 			MotorMode rightMode,
-			int rightSpeed);
+			uint8_t rightSpeed);
 
 	/** Moves the robot in a given heading angle (in degress) and a given speed (0-255) */
 	static Command::Message roll(int heading,
@@ -326,7 +326,7 @@ struct Macro {
 	static Command::Message rotationRate(uint8_t rate); //?
 
 	/** Runs the given macro (untested) */
-	static Command::Message runMacro(int macroId);
+	static Command::Message runMacro(uint8_t macroId);
 
 	/** Tells the robot to stream back sensor data
 	 * @param mDivisor Divisor to divide the default sampling rate of 400 Hz
@@ -334,10 +334,10 @@ struct Macro {
 	 * @param mSensorMask Which sensor values to send (bit mask from StreamingMasks)
 	 * @param mPacketCount Number of packets to receive
 	 **/
-	static Command::Message setDataStreaming(int mDivisor,
-			int mPacketFrames,
+	static Command::Message setDataStreaming(uint16_t mDivisor,
+			uint16_t mPacketFrames,
 			int mSensorMask,
-			int mPacketCount);
+			uint8_t mPacketCount);
 
 	/** Sets the robot name */
 	static Command::Message setRobotName(const std::string &name);

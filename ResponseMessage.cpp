@@ -150,7 +150,7 @@ size_t Message::getPayloadStart() const {
 }
 
 size_t Message::getPayloadLength() const {
-	if (packet.size() < PAYLOAD_LENGTH_INDEX) {
+	if (packet.size() <= PAYLOAD_LENGTH_INDEX) {
 		return 0;
 	} else {
 		return packet[PAYLOAD_LENGTH_INDEX];

@@ -201,11 +201,12 @@ void Robot::listen(IListener &listener) {
 }
 
 void Robot::roll(int heading, uint8_t speed) {
+	heading = ((heading % 360) + 360) % 360;
 	send(Macro::roll(heading, speed, false));
 }
 
 void Robot::calibrateHeading(int heading) {
-	send(Macro::roll(heading, 0, false));
+	roll(heading, 0);
 	send(Macro::calibrate(heading));
 }
 
